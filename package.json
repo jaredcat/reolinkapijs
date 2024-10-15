@@ -1,0 +1,56 @@
+{
+  "name": "reolinkapijs",
+  "version": "1.0.0",
+  "description": "Reolink Javascript Api Client",
+  "main": "build/index.js",
+  "directories": {
+    "example": "examples",
+    "test": "tests"
+  },
+  "scripts": {
+    "build:ts": "tsc -p tsconfig.build.json && npm run copy-proto-build",
+    "copy-proto-build": "npx copyfiles -u 1 \"src/**/*.proto\" \"src/**/*.crt\" build",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm run build:ts",
+    "watch:ts": "tsc -p tsconfig.build.json --watch",
+    "watch": "npm run watch:ts",
+    "lint": "eslint src",
+    "prepublishOnly": "tsc -p tsconfig.build.json && npm run copy-proto-build"
+  },
+  "dependencies": {
+    "@u4/opencv4nodejs": "^7.1.2",
+    "axios": "^1.7.7",
+    "ts-mixer": "^6.0.4"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3.1.0",
+    "@eslint/js": "^9.12.0",
+    "@types/eslint__eslintrc": "^2.1.2",
+    "@types/eslint__js": "^8.42.3",
+    "@types/node": "^22.7.5",
+    "@typescript-eslint/eslint-plugin": "^8.9.0",
+    "@typescript-eslint/parser": "^8.9.0",
+    "eslint": "^9.12.0",
+    "typescript": "^5.6.3"
+  },
+  "opencv4nodejs": {
+    "disableAutoBuild": "1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jaredcat/reolinkapijs.git"
+  },
+  "keywords": [
+    "reolink"
+  ],
+  "author": "jaredcat",
+  "license": "GPL-3.0",
+  "engines": {
+    "node": ">=20.16.0"
+  },
+  "bugs": {
+    "url": "https://github.com/jaredcat/reolinkapijs/issues"
+  },
+  "homepage": "https://github.com/jaredcat/reolinkapijs#readme",
+  "packageManager": "yarn@1.22.19+sha1.4ba7fc5c6e704fce2066ecbfb0b0d8976fe62447"
+}
