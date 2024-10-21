@@ -1,24 +1,7 @@
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import fs from 'fs';
+import CommandData from '../types/CommandData';
 import Request from './rest_handler';
-
-export interface CommandData {
-  cmd: string;
-  action: number;
-  param?: {
-    User?: {
-      userName: string;
-      password: string;
-    };
-    Alarm?: {
-      channel: number;
-      type: string;
-    };
-    DevName?: { name: string };
-    HddInfo?: { id: number[] };
-  };
-  filepath?: string;
-}
 
 interface LoginResponse {
   code: string;
