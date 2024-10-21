@@ -1,9 +1,17 @@
 import { Mixin } from 'ts-mixer';
-import BaseAPIHandler, { CommandData } from '../handlers/base_api_handler';
+import BaseAPIHandler from '../handlers/base_api_handler';
+import CommandData from '../types/CommandData';
 
 interface AlarmResponse {
   // Define the structure of the response if known, use any if the structure is dynamic
   [key: string]: any;
+}
+
+export interface AlarmAPIMixinParams {
+  Alarm: {
+    channel: number;
+    type: string;
+  };
 }
 
 export default class AlarmAPIMixin extends Mixin(BaseAPIHandler) {

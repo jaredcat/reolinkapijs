@@ -3,6 +3,7 @@
   "eslint.enable": true,
   "files.eol": "\n",
   "cSpell.words": [
+    "bgcolor",
     "Rtsp"
   ]
 }
