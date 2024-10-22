@@ -1,4 +1,23 @@
-import { BaseAPIHandler } from '../handlers';
+import BaseAPIHandler from '@handlers/base_api_handler';
+
+export interface SetEncParams {
+  Enc: {
+    audio: number;
+    channel: number;
+    mainStream: {
+      bitRate: number;
+      frameRate: number;
+      profile: string;
+      size: string;
+    };
+    subStream: {
+      bitRate: number;
+      frameRate: number;
+      profile: string;
+      size: string;
+    };
+  };
+}
 
 class RecordAPIMixin extends BaseAPIHandler {
   async getRecordingEncoding(): Promise<Record<string, any>> {

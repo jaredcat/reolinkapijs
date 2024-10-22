@@ -1,8 +1,8 @@
+import APIHandler from '@handlers/api_handler';
 import { AxiosInstance, AxiosRequestConfig } from 'axios';
-import { APIHandler } from './handlers';
 
 class Camera extends APIHandler {
-  private profile: string;
+  protected profile: string;
 
   constructor(
     ip: string,

@@ -1,4 +1,4 @@
-import { BaseAPIHandler } from '../handlers';
+import BaseAPIHandler from '@handlers/base_api_handler';
 
 class SystemAPIMixin extends BaseAPIHandler {
   async getGeneralSystem(): Promise<Record<string, any>> {

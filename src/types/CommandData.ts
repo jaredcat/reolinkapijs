@@ -10,6 +10,7 @@ import {
 } from '../mixins/network';
 import { NvrDownloadParams } from '../mixins/nvrdownload';
 import { SetEncParams } from '../mixins/record';
+import { DelUserParams } from '../mixins/user';
 
 type CommandDataParam = {
   channel?: number;
@@ -27,6 +28,7 @@ type CommandDataParam = {
   | SetNetPortParams
   | NvrDownloadParams
   | SetEncParams
+  | DelUserParams
 );
 
 interface UserParam {

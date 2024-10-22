@@ -1,9 +1,36 @@
+import BaseAPIHandler from '@handlers/base_api_handler';
+import { Mat } from '@u4/opencv4nodejs';
 import axios from 'axios';
-import { BaseAPIHandler } from '../handlers';
-import { Image } from './types/image';
-import { RtspClient } from './utils/rtsp_client';
+import sharp from 'sharp';
+import RtspClient from '../utils/rtsp_client';
 
+// Type definitions
+interface ProxyConfig {
+  host: string;
+  port: number;
+}
+
+type CallbackFunction = (frame: Mat) => void;
+
+interface SnapParams {
+  cmd: string;
+  channel: number;
+  rs: string;
+  user: string;
+  password: string;
+}
+
+/**
+ * API calls for opening a video stream or capturing an image from the camera.
+ */
 class StreamAPIMixin extends BaseAPIHandler {
+  protected profile: string = 'main'; // Add this property if not in BaseAPIHandler
+
+  /**
+   * Generates a random string for request parameters
+   * @param length Length of the random string
+   * @returns Random string of specified length
+   */
   private generateRandomString(length: number): string {
     const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     return Array.from(
@@ -12,10 +39,17 @@ class StreamAPIMixin extends BaseAPIHandler {
     ).join('');
   }
 
-  async openVideoStream(
-    callback?: (frame: any) => void,
-    proxies?: any,
-  ): Promise<any> {
+  /**
+   * Opens a video stream from the camera
+   * @see https://support.reolink.com/hc/en-us/articles/360007010473-How-to-Live-View-Reolink-Cameras-via-VLC-Media-Player
+   * @param callback Optional callback function to handle frames
+   * @param proxies Optional proxy configuration
+   * @returns AsyncGenerator that yields video frames
+   */
+  async *openVideoStream(
+    callback?: CallbackFunction,
+    proxies?: ProxyConfig,
+  ): AsyncGenerator<Mat> | Promise<void> {
     const rtspClient = new RtspClient({
       ip: this.ip,
       username: this.username,
@@ -24,11 +58,21 @@ class StreamAPIMixin extends BaseAPIHandler {
       proxies,
       callback,
     });
-    return rtspClient.openStream();
+
+    yield* rtspClient.openStream();
   }
 
-  async getSnap(timeout: number = 3, proxies?: any): Promise<Image | null> {
-    const data = {
+  /**
+   * Gets a "snap" of the current camera video data
+   * @param timeout Request timeout to camera in seconds
+   * @param proxies http/https proxies to pass to the request object
+   * @returns Promise resolving to Sharp image object or null
+   */
+  async getSnap(
+    timeout: number = 3,
+    proxies?: ProxyConfig,
+  ): Promise<sharp.Sharp | null> {
+    const params: SnapParams = {
       cmd: 'Snap',
       channel: 0,
       rs: this.generateRandomString(10),
@@ -38,15 +82,14 @@ class StreamAPIMixin extends BaseAPIHandler {
 
     try {
       const response = await axios.get(this.url, {
-        params: data,
-        timeout: timeout * 1000,
+        params,
         proxy: proxies,
+        timeout: timeout * 1000, // Convert to milliseconds
         responseType: 'arraybuffer',
       });
 
       if (response.status === 200) {
-        // You'll need to implement this function to create an Image from the response data
-        return this.createImageFromBuffer(response.data);
+        return sharp(Buffer.from(response.data));
       }
 
       console.log(
@@ -54,16 +97,10 @@ class StreamAPIMixin extends BaseAPIHandler {
         response.status,
       );
       return null;
-    } catch (e) {
-      console.error('Could not get Image data', e);
-      throw e;
+    } catch (error) {
+      console.error('Could not get Image data\n', error);
+      throw error;
     }
-  }
-
-  private createImageFromBuffer(buffer: ArrayBuffer): Image {
-    // Implement this method to create an Image object from the buffer
-    // This will depend on how you want to handle images in your TypeScript project
-    throw new Error('Method not implemented');
   }
 }
 
