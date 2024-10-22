@@ -4,3 +4,4 @@ build
 *.tgz
 .DS_Store
 .env
+tmp

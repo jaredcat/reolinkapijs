@@ -13,11 +13,11 @@ interface LoginResponse {
 }
 
 class BaseAPIHandler {
-  private url: string;
-  private ip: string;
+  protected url: string;
+  protected ip: string;
   private token: string | null = null;
-  private username: string;
-  private password: string;
+  protected username: string;
+  protected password: string;
 
   constructor(
     ip: string,

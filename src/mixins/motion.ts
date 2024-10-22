@@ -1,4 +1,4 @@
-import { BaseAPIHandler } from '../handlers';
+import BaseAPIHandler from '@handlers/base_api_handler';
 import CommandData from '../types/CommandData';
 
 export interface SearchParams {

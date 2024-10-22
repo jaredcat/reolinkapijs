@@ -35,15 +35,28 @@
         ],
         "sourceMap": true,
         "inlineSourceMap": false,
+        "types": [
+            "vitest/globals"
+        ],
         "paths": {
-            "got": [
-                "./node_modules/got/dist/source"
-            ]
-        }
+            "@mixins/*": [
+                "./src/mixins/*"
+            ],
+            "@handlers/*": [
+                "./src/handlers/*"
+            ],
+            "@types/*": [
+                "./src/types/*"
+            ],
+            "@utils/*": [
+                "./src/utils/*"
+            ],
+        },
     },
     "include": [
         "src/**/*.ts",
-        "eslint.config.mjs"
+        "eslint.config.mjs",
+        "vitest.config.mjs"
     ],
     "exclude": [
         "build/**",
