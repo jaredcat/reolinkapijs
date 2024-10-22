@@ -1,4 +1,4 @@
-import BaseAPIHandler from "@handlers/baseApiHandler";
+import BaseAPIHandler from '@handlers/baseApiHandler';
 
 export interface SetEncParams {
   Enc: {
@@ -21,29 +21,29 @@ export interface SetEncParams {
 
 class RecordAPIMixin extends BaseAPIHandler {
   async getRecordingEncoding(): Promise<Record<string, any>> {
-    const body = [{ cmd: "GetEnc", action: 1, param: { channel: 0 } }];
-    return this.executeCommand("GetEnc", body);
+    const body = [{ cmd: 'GetEnc', action: 1, param: { channel: 0 } }];
+    return this.executeCommand('GetEnc', body);
   }
 
   async getRecordingAdvanced(): Promise<Record<string, any>> {
-    const body = [{ cmd: "GetRec", action: 1, param: { channel: 0 } }];
-    return this.executeCommand("GetRec", body);
+    const body = [{ cmd: 'GetRec', action: 1, param: { channel: 0 } }];
+    return this.executeCommand('GetRec', body);
   }
 
   async setRecordingEncoding(
     audio: number = 0,
     mainBitRate: number = 8192,
     mainFrameRate: number = 8,
-    mainProfile: string = "High",
-    mainSize: string = "2560*1440",
+    mainProfile: string = 'High',
+    mainSize: string = '2560*1440',
     subBitRate: number = 160,
     subFrameRate: number = 7,
-    subProfile: string = "High",
-    subSize: string = "640*480",
+    subProfile: string = 'High',
+    subSize: string = '640*480',
   ): Promise<Record<string, any>> {
     const body = [
       {
-        cmd: "SetEnc",
+        cmd: 'SetEnc',
         action: 0,
         param: {
           Enc: {
@@ -65,7 +65,7 @@ class RecordAPIMixin extends BaseAPIHandler {
         },
       },
     ];
-    return this.executeCommand("SetEnc", body);
+    return this.executeCommand('SetEnc', body);
   }
 }
 

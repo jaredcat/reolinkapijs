@@ -1,5 +1,5 @@
-import BaseAPIHandler from "@handlers/baseApiHandler";
-import CommandData from "@interfaces/CommandData";
+import BaseAPIHandler from '@handlers/baseApiHandler';
+import CommandData from '@interfaces/CommandData';
 
 class DownloadAPIMixin extends BaseAPIHandler {
   /**
@@ -15,7 +15,7 @@ class DownloadAPIMixin extends BaseAPIHandler {
      */
     const body: CommandData[] = [
       {
-        cmd: "Download",
+        cmd: 'Download',
         action: 0, // action is required in CommandData, but not used in the original Python code
         source: filename,
         output: filename,
@@ -24,10 +24,10 @@ class DownloadAPIMixin extends BaseAPIHandler {
     ];
 
     try {
-      const resp = await this.executeCommand("Download", body);
+      const resp = await this.executeCommand('Download', body);
       return resp;
     } catch (error) {
-      console.error("Error downloading file:", error);
+      console.error('Error downloading file:', error);
       return false;
     }
   }

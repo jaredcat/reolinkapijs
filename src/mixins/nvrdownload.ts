@@ -1,5 +1,5 @@
-import BaseAPIHandler from "@handlers/baseApiHandler";
-import CommandData from "@interfaces/CommandData";
+import BaseAPIHandler from '@handlers/baseApiHandler';
+import CommandData from '@interfaces/CommandData';
 
 export interface NvrDownloadParams {
   NvrDownload: {
@@ -25,7 +25,7 @@ class NvrDownloadAPIMixin extends BaseAPIHandler {
     start: Date,
     end: Date = new Date(),
     channel: number = 0,
-    streamType: string = "sub",
+    streamType: string = 'sub',
   ): Promise<string[]> {
     const searchParams: NvrDownloadParams = {
       NvrDownload: {
@@ -38,11 +38,11 @@ class NvrDownloadAPIMixin extends BaseAPIHandler {
     };
 
     const body: CommandData[] = [
-      { cmd: "NvrDownload", action: 1, param: searchParams },
+      { cmd: 'NvrDownload', action: 1, param: searchParams },
     ];
 
     try {
-      const resp = (await this.executeCommand("NvrDownload", body))[0];
+      const resp = (await this.executeCommand('NvrDownload', body))[0];
       if (!resp.value?.fileList) {
         return [];
       }

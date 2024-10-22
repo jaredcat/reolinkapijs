@@ -1,16 +1,16 @@
-import { AlarmAPIMixinParams } from "../mixins/alarm";
-import { DeviceAPIMixinParams } from "../mixins/device";
-import { SetOsdParams } from "../mixins/display";
-import { SetImageParams, SetIspParams } from "../mixins/image";
-import { SearchParams } from "../mixins/motion";
+import { AlarmAPIMixinParams } from '../mixins/alarm';
+import { DeviceAPIMixinParams } from '../mixins/device';
+import { SetOsdParams } from '../mixins/display';
+import { SetImageParams, SetIspParams } from '../mixins/image';
+import { SearchParams } from '../mixins/motion';
 import {
   SetLocalLinkParams,
   SetNetPortParams,
   SetWifiParams,
-} from "../mixins/network";
-import { NvrDownloadParams } from "../mixins/nvrdownload";
-import { SetEncParams } from "../mixins/record";
-import { DelUserParams } from "../mixins/user";
+} from '../mixins/network';
+import { NvrDownloadParams } from '../mixins/nvrdownload';
+import { SetEncParams } from '../mixins/record';
+import { DelUserParams } from '../mixins/user';
 
 type CommandDataParam = {
   channel?: number;
@@ -48,10 +48,10 @@ export default interface CommandData {
 }
 
 export enum OsdPos {
-  "Upper Left",
-  "Top Center",
-  "Upper Right",
-  "Lower Left",
-  "Bottom Center",
-  "Lower Right",
+  'Upper Left',
+  'Top Center',
+  'Upper Right',
+  'Lower Left',
+  'Bottom Center',
+  'Lower Right',
 }

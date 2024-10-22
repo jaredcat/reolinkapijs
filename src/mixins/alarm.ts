@@ -1,6 +1,6 @@
-import BaseAPIHandler from "@handlers/baseApiHandler";
-import CommandData from "@interfaces/CommandData";
-import { Mixin } from "ts-mixer";
+import BaseAPIHandler from '@handlers/baseApiHandler';
+import CommandData from '@interfaces/CommandData';
+import { Mixin } from 'ts-mixer';
 
 interface AlarmResponse {
   // Define the structure of the response if known, use any if the structure is dynamic
@@ -23,17 +23,17 @@ export default class AlarmAPIMixin extends Mixin(BaseAPIHandler) {
      */
     const body: CommandData[] = [
       {
-        cmd: "GetAlarm",
+        cmd: 'GetAlarm',
         action: 1,
         param: {
           Alarm: {
             channel: 0,
-            type: "md", // 'md' indicates motion detection
+            type: 'md', // 'md' indicates motion detection
           },
         },
       },
     ];
 
-    return this.executeCommand("GetAlarm", body);
+    return this.executeCommand('GetAlarm', body);
   }
 }

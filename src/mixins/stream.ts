@@ -1,8 +1,8 @@
-import BaseAPIHandler from "@handlers/baseApiHandler";
-import { Mat } from "@u4/opencv4nodejs";
-import RtspClient from "@utils/rtspClient";
-import axios from "axios";
-import sharp from "sharp";
+import BaseAPIHandler from '@handlers/baseApiHandler';
+import { Mat } from '@u4/opencv4nodejs';
+import RtspClient from '@utils/rtspClient';
+import axios from 'axios';
+import sharp from 'sharp';
 
 // Type definitions
 interface ProxyConfig {
@@ -24,7 +24,7 @@ interface SnapParams {
  * API calls for opening a video stream or capturing an image from the camera.
  */
 class StreamAPIMixin extends BaseAPIHandler {
-  protected profile: string = "main"; // Add this property if not in BaseAPIHandler
+  protected profile: string = 'main'; // Add this property if not in BaseAPIHandler
 
   /**
    * Generates a random string for request parameters
@@ -32,11 +32,11 @@ class StreamAPIMixin extends BaseAPIHandler {
    * @returns Random string of specified length
    */
   private generateRandomString(length: number): string {
-    const characters = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+    const characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
     return Array.from(
       { length },
       () => characters[Math.floor(Math.random() * characters.length)],
-    ).join("");
+    ).join('');
   }
 
   /**
@@ -73,7 +73,7 @@ class StreamAPIMixin extends BaseAPIHandler {
     proxies?: ProxyConfig,
   ): Promise<sharp.Sharp | null> {
     const params: SnapParams = {
-      cmd: "Snap",
+      cmd: 'Snap',
       channel: 0,
       rs: this.generateRandomString(10),
       user: this.username,
@@ -85,7 +85,7 @@ class StreamAPIMixin extends BaseAPIHandler {
         params,
         proxy: proxies,
         timeout: timeout * 1000, // Convert to milliseconds
-        responseType: "arraybuffer",
+        responseType: 'arraybuffer',
       });
 
       if (response.status === 200) {
@@ -93,12 +93,12 @@ class StreamAPIMixin extends BaseAPIHandler {
       }
 
       console.log(
-        "Could not retrieve data from camera successfully. Status:",
+        'Could not retrieve data from camera successfully. Status:',
         response.status,
       );
       return null;
     } catch (error) {
-      console.error("Could not get Image data\n", error);
+      console.error('Could not get Image data\n', error);
       throw error;
     }
   }

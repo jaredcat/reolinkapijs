@@ -1,8 +1,8 @@
-import "dotenv/config";
-import { existsSync } from "fs";
-import { mkdirp } from "mkdirp";
-import { beforeAll, beforeEach, describe, expect, test } from "vitest";
-import Camera from "./camera";
+import 'dotenv/config';
+import { existsSync } from 'fs';
+import { mkdirp } from 'mkdirp';
+import { beforeAll, beforeEach, describe, expect, test } from 'vitest';
+import Camera from './camera';
 
 interface CameraConfig {
   camera: {
@@ -13,7 +13,7 @@ interface CameraConfig {
   };
 }
 
-describe("Camera", () => {
+describe('Camera', () => {
   let config: CameraConfig;
   let cam: Camera;
 
@@ -23,7 +23,7 @@ describe("Camera", () => {
         ip: process.env.CAMERA_IP,
         username: process.env.CAMERA_USERNAME,
         password: process.env.CAMERA_PASSWORD,
-        https: process.env.CAMERA_HTTPS === "true" ? true : false,
+        https: process.env.CAMERA_HTTPS === 'true' ? true : false,
       },
     } as CameraConfig;
   });
@@ -37,16 +37,16 @@ describe("Camera", () => {
     );
   });
 
-  test("camera connects and gets a token", () => {
-    expect(cam["ip"]).toBe(config.camera.ip);
-    expect(cam["token"]).not.toBe("");
+  test('camera connects and gets a token', () => {
+    expect(cam['ip']).toBe(config.camera.ip);
+    expect(cam['token']).not.toBe('');
   });
 
-  test("snapshot functionality", async () => {
+  test('snapshot functionality', async () => {
     const img = await cam.getSnap();
 
     // Ensure the directory exists
-    const outputPath = "../tmp/snaps/";
+    const outputPath = '../tmp/snaps/';
     await mkdirp(outputPath);
 
     const outputFilePath = `${outputPath}camera.jpg`;

@@ -1,9 +1,9 @@
-import { FlatCompat } from "@eslint/eslintrc";
-import js from "@eslint/js";
-import tsParser from "@typescript-eslint/parser";
-import eslintConfigPrettier from "eslint-config-prettier";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+import { FlatCompat } from '@eslint/eslintrc';
+import js from '@eslint/js';
+import tsParser from '@typescript-eslint/parser';
+import eslintConfigPrettier from 'eslint-config-prettier';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -14,26 +14,26 @@ const compat = new FlatCompat({
 });
 
 export default [
-  ...compat.extends("plugin:@typescript-eslint/recommended"),
+  ...compat.extends('plugin:@typescript-eslint/recommended'),
   {
     plugins: {},
 
     languageOptions: {
       parser: tsParser,
-      ecmaVersion: "latest",
-      sourceType: "module",
+      ecmaVersion: 'latest',
+      sourceType: 'module',
 
       parserOptions: {
-        project: "./tsconfig.json",
+        project: './tsconfig.json',
       },
     },
 
     rules: {
-      "@typescript-eslint/no-parameter-properties": "off",
-      "@typescript-eslint/no-explicit-any": "off",
+      '@typescript-eslint/no-parameter-properties': 'off',
+      '@typescript-eslint/no-explicit-any': 'off',
 
-      "@typescript-eslint/no-use-before-define": [
-        "error",
+      '@typescript-eslint/no-use-before-define': [
+        'error',
         {
           functions: false,
           typedefs: false,
@@ -41,35 +41,35 @@ export default [
         },
       ],
 
-      "@typescript-eslint/no-unused-vars": [
-        "error",
+      '@typescript-eslint/no-unused-vars': [
+        'error',
         {
           ignoreRestSiblings: true,
-          argsIgnorePattern: "^_",
+          argsIgnorePattern: '^_',
         },
       ],
 
-      "@typescript-eslint/explicit-function-return-type": [
-        "warn",
+      '@typescript-eslint/explicit-function-return-type': [
+        'warn',
         {
           allowExpressions: true,
           allowTypedFunctionExpressions: true,
         },
       ],
 
-      "@typescript-eslint/no-object-literal-type-assertion": "off",
-      "@typescript-eslint/interface-name-prefix": "off",
-      "@typescript-eslint/no-non-null-assertion": "off",
-      "no-var": "error",
-      "prefer-const": "error",
-      "no-trailing-spaces": "error",
+      '@typescript-eslint/no-object-literal-type-assertion': 'off',
+      '@typescript-eslint/interface-name-prefix': 'off',
+      '@typescript-eslint/no-non-null-assertion': 'off',
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'no-trailing-spaces': 'error',
     },
   },
   {
-    files: ["**/*.test.ts"],
+    files: ['**/*.test.ts'],
 
     rules: {
-      "@typescript-eslint/explicit-function-return-type": "off",
+      '@typescript-eslint/explicit-function-return-type': 'off',
     },
   },
   eslintConfigPrettier,

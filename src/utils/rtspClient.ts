@@ -1,5 +1,5 @@
-import cv, { Mat, VideoCapture } from "@u4/opencv4nodejs";
-import EventEmitter from "events";
+import cv, { Mat, VideoCapture } from '@u4/opencv4nodejs';
+import EventEmitter from 'events';
 
 interface RtspConfig {
   ip: string;
@@ -30,7 +30,7 @@ class RtspClient extends EventEmitter {
     username,
     password,
     port = 554,
-    profile = "main",
+    profile = 'main',
     useUdp = true,
     callback,
     proxies,
@@ -43,7 +43,7 @@ class RtspClient extends EventEmitter {
 
     // Set streaming options
     this.streamOptions = {
-      OPENCV_FFMPEG_CAPTURE_OPTIONS: `rtsp_transport;${useUdp ? "udp" : "tcp"}`,
+      OPENCV_FFMPEG_CAPTURE_OPTIONS: `rtsp_transport;${useUdp ? 'udp' : 'tcp'}`,
     };
 
     // If proxy is configured, set up the environment
@@ -70,7 +70,7 @@ class RtspClient extends EventEmitter {
       // Set buffer size (optional)
       // this.capture.set(cv.CAP_PROP_BUFFERSIZE, 3);
     } catch (error) {
-      console.error("Error opening video capture:", error);
+      console.error('Error opening video capture:', error);
       throw error;
     }
   }
@@ -80,7 +80,7 @@ class RtspClient extends EventEmitter {
    */
   private async *streamBlocking(): AsyncGenerator<Mat> {
     if (!this.capture) {
-      throw new Error("Video capture not initialized");
+      throw new Error('Video capture not initialized');
     }
 
     while (true) {
@@ -90,16 +90,16 @@ class RtspClient extends EventEmitter {
           if (!frame.empty) {
             yield frame;
           } else {
-            console.log("Received empty frame");
+            console.log('Received empty frame');
             break;
           }
         } else {
-          console.log("Stream closed");
+          console.log('Stream closed');
           this.capture = null;
           return;
         }
       } catch (error) {
-        console.error("Error reading frame:", error);
+        console.error('Error reading frame:', error);
         this.capture?.release();
         this.capture = null;
         return;
@@ -112,7 +112,7 @@ class RtspClient extends EventEmitter {
    */
   private async streamNonBlocking(): Promise<void> {
     if (!this.callback || !this.capture) {
-      throw new Error("Callback not set or video capture not initialized");
+      throw new Error('Callback not set or video capture not initialized');
     }
 
     const processFrame = async (): Promise<void> => {
@@ -127,11 +127,11 @@ class RtspClient extends EventEmitter {
           // Schedule next frame processing
           setImmediate(processFrame);
         } else {
-          console.log("Stream is closed");
+          console.log('Stream is closed');
           this.stopStream();
         }
       } catch (error) {
-        console.error("Error in non-blocking stream:", error);
+        console.error('Error in non-blocking stream:', error);
         this.stopStream();
       }
     };
@@ -161,7 +161,7 @@ class RtspClient extends EventEmitter {
       this.openVideoCapture();
     }
 
-    console.log("Opening stream");
+    console.log('Opening stream');
     this.threadCancelled = false;
 
     if (!this.callback) {

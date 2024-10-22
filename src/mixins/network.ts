@@ -1,5 +1,5 @@
-import BaseAPIHandler from "@handlers/baseApiHandler";
-import CommandData from "@interfaces/CommandData";
+import BaseAPIHandler from '@handlers/baseApiHandler';
+import CommandData from '@interfaces/CommandData';
 
 export interface SetLocalLinkParams {
   LocalLink: {
@@ -52,7 +52,7 @@ class NetworkAPIMixin extends BaseAPIHandler {
   ): Promise<any> {
     const body: CommandData[] = [
       {
-        cmd: "SetLocalLink",
+        cmd: 'SetLocalLink',
         action: 0,
         param: {
           LocalLink: {
@@ -67,14 +67,14 @@ class NetworkAPIMixin extends BaseAPIHandler {
               ip: ip,
               mask: mask,
             },
-            type: useDhcp ? "DHCP" : "Static",
+            type: useDhcp ? 'DHCP' : 'Static',
           },
         },
       },
     ];
 
-    const result = await this.executeCommand("SetLocalLink", body);
-    console.log("Successfully Set Network Settings");
+    const result = await this.executeCommand('SetLocalLink', body);
+    console.log('Successfully Set Network Settings');
     return result;
   }
 
@@ -88,7 +88,7 @@ class NetworkAPIMixin extends BaseAPIHandler {
   ): Promise<boolean> {
     const body: CommandData[] = [
       {
-        cmd: "SetNetPort",
+        cmd: 'SetNetPort',
         action: 0,
         param: {
           NetPort: {
@@ -102,15 +102,15 @@ class NetworkAPIMixin extends BaseAPIHandler {
         },
       },
     ];
-    await this.executeCommand("SetNetPort", body, true);
-    console.log("Successfully Set Network Ports");
+    await this.executeCommand('SetNetPort', body, true);
+    console.log('Successfully Set Network Ports');
     return true;
   }
 
   public async setWifi(ssid: string, password: string): Promise<any> {
     const body: CommandData[] = [
       {
-        cmd: "SetWifi",
+        cmd: 'SetWifi',
         action: 0,
         param: {
           Wifi: {
@@ -120,56 +120,56 @@ class NetworkAPIMixin extends BaseAPIHandler {
         },
       },
     ];
-    return this.executeCommand("SetWifi", body);
+    return this.executeCommand('SetWifi', body);
   }
 
   public async getNetPorts(): Promise<any> {
     const body: CommandData[] = [
-      { cmd: "GetNetPort", action: 1, param: {} },
-      { cmd: "GetUpnp", action: 0, param: {} },
-      { cmd: "GetP2p", action: 0, param: {} },
+      { cmd: 'GetNetPort', action: 1, param: {} },
+      { cmd: 'GetUpnp', action: 0, param: {} },
+      { cmd: 'GetP2p', action: 0, param: {} },
     ];
-    return this.executeCommand("GetNetPort", body, true);
+    return this.executeCommand('GetNetPort', body, true);
   }
 
   public async getWifi(): Promise<any> {
-    const body: CommandData[] = [{ cmd: "GetWifi", action: 1, param: {} }];
-    return this.executeCommand("GetWifi", body);
+    const body: CommandData[] = [{ cmd: 'GetWifi', action: 1, param: {} }];
+    return this.executeCommand('GetWifi', body);
   }
 
   public async scanWifi(): Promise<any> {
-    const body: CommandData[] = [{ cmd: "ScanWifi", action: 1, param: {} }];
-    return this.executeCommand("ScanWifi", body);
+    const body: CommandData[] = [{ cmd: 'ScanWifi', action: 1, param: {} }];
+    return this.executeCommand('ScanWifi', body);
   }
 
   public async getNetworkGeneral(): Promise<any> {
-    const body: CommandData[] = [{ cmd: "GetLocalLink", action: 0, param: {} }];
-    return this.executeCommand("GetLocalLink", body);
+    const body: CommandData[] = [{ cmd: 'GetLocalLink', action: 0, param: {} }];
+    return this.executeCommand('GetLocalLink', body);
   }
 
   public async getNetworkDdns(): Promise<any> {
-    const body: CommandData[] = [{ cmd: "GetDdns", action: 0, param: {} }];
-    return this.executeCommand("GetDdns", body);
+    const body: CommandData[] = [{ cmd: 'GetDdns', action: 0, param: {} }];
+    return this.executeCommand('GetDdns', body);
   }
 
   public async getNetworkNtp(): Promise<any> {
-    const body: CommandData[] = [{ cmd: "GetNtp", action: 0, param: {} }];
-    return this.executeCommand("GetNtp", body);
+    const body: CommandData[] = [{ cmd: 'GetNtp', action: 0, param: {} }];
+    return this.executeCommand('GetNtp', body);
   }
 
   public async getNetworkEmail(): Promise<any> {
-    const body: CommandData[] = [{ cmd: "GetEmail", action: 0, param: {} }];
-    return this.executeCommand("GetEmail", body);
+    const body: CommandData[] = [{ cmd: 'GetEmail', action: 0, param: {} }];
+    return this.executeCommand('GetEmail', body);
   }
 
   public async getNetworkFtp(): Promise<any> {
-    const body: CommandData[] = [{ cmd: "GetFtp", action: 0, param: {} }];
-    return this.executeCommand("GetFtp", body);
+    const body: CommandData[] = [{ cmd: 'GetFtp', action: 0, param: {} }];
+    return this.executeCommand('GetFtp', body);
   }
 
   public async getNetworkPush(): Promise<any> {
-    const body: CommandData[] = [{ cmd: "GetPush", action: 0, param: {} }];
-    return this.executeCommand("GetPush", body);
+    const body: CommandData[] = [{ cmd: 'GetPush', action: 0, param: {} }];
+    return this.executeCommand('GetPush', body);
   }
 
   public async getNetworkStatus(): Promise<any> {

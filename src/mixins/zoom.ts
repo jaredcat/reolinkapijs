@@ -1,4 +1,4 @@
-import BaseAPIHandler from "@handlers/baseApiHandler";
+import BaseAPIHandler from '@handlers/baseApiHandler';
 
 interface PtzResponse {
   [key: string]: any;
@@ -22,7 +22,7 @@ class ZoomAPIMixin extends BaseAPIHandler {
   ): Promise<PtzResponse> {
     const data = [
       {
-        cmd: "PtzCtrl",
+        cmd: 'PtzCtrl',
         action: 0,
         param: {
           channel: 0,
@@ -31,7 +31,7 @@ class ZoomAPIMixin extends BaseAPIHandler {
         },
       },
     ];
-    return this.executeCommand("PtzCtrl", data);
+    return this.executeCommand('PtzCtrl', data);
   }
 
   /**
@@ -41,15 +41,15 @@ class ZoomAPIMixin extends BaseAPIHandler {
   private async stopZoomingOrFocusing(): Promise<PtzResponse> {
     const data = [
       {
-        cmd: "PtzCtrl",
+        cmd: 'PtzCtrl',
         action: 0,
         param: {
           channel: 0,
-          op: "Stop",
+          op: 'Stop',
         },
       },
     ];
-    return this.executeCommand("PtzCtrl", data);
+    return this.executeCommand('PtzCtrl', data);
   }
 
   /**
@@ -58,7 +58,7 @@ class ZoomAPIMixin extends BaseAPIHandler {
    * @returns Response from the camera
    */
   async startZoomingIn(speed: number = 60): Promise<PtzResponse> {
-    return this.startOperation("ZoomInc", speed);
+    return this.startOperation('ZoomInc', speed);
   }
 
   /**
@@ -67,7 +67,7 @@ class ZoomAPIMixin extends BaseAPIHandler {
    * @returns Response from the camera
    */
   async startZoomingOut(speed: number = 60): Promise<PtzResponse> {
-    return this.startOperation("ZoomDec", speed);
+    return this.startOperation('ZoomDec', speed);
   }
 
   /**
@@ -84,7 +84,7 @@ class ZoomAPIMixin extends BaseAPIHandler {
    * @returns Response from the camera
    */
   async startFocusingIn(speed: number = 32): Promise<PtzResponse> {
-    return this.startOperation("FocusInc", speed);
+    return this.startOperation('FocusInc', speed);
   }
 
   /**
@@ -93,7 +93,7 @@ class ZoomAPIMixin extends BaseAPIHandler {
    * @returns Response from the camera
    */
   async startFocusingOut(speed: number = 32): Promise<PtzResponse> {
-    return this.startOperation("FocusDec", speed);
+    return this.startOperation('FocusDec', speed);
   }
 
   /**

@@ -1,10 +1,9 @@
 [
-    {
-       "cmd" : "SetPtzPreset",
-       "code" : 0,
-       "value" : {
-          "rspCode" : 200
-       }
+  {
+    "cmd": "SetPtzPreset",
+    "code": 0,
+    "value": {
+      "rspCode": 200
     }
- ]
- 
+  }
+]
