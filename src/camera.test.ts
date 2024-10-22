@@ -1,5 +1,6 @@
 import 'dotenv/config';
 import { existsSync } from 'fs';
+import { mkdirp } from 'mkdirp';
 import { beforeAll, beforeEach, describe, expect, test } from 'vitest';
 import Camera from './camera';
 
@@ -45,11 +46,14 @@ describe('Camera', () => {
     const img = await cam.getSnap();
 
     // Ensure the directory exists
-    const outputPath = '../tmp/snaps/camera.jpg';
+    const outputPath = '../tmp/snaps/';
+    await mkdirp(outputPath);
+
+    const outputFilePath = `${outputPath}camera.jpg`;
 
     // Using sharp to save the image
-    await img?.jpeg().toFile(outputPath);
+    await img?.jpeg().toFile(outputFilePath);
 
-    expect(existsSync(outputPath)).toBe(true);
+    expect(existsSync(outputFilePath)).toBe(true);
   });
 });
