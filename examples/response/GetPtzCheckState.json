@@ -6,11 +6,7 @@
       "PtzCheckState": 2
     },
     "range": {
-      "PtzCheckState": [
-        0,
-        1,
-        2
-      ]
+      "PtzCheckState": [0, 1, 2]
     },
     "value": {
       "PtzCheckState": 2

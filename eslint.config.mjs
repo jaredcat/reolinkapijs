@@ -1,6 +1,7 @@
 import { FlatCompat } from '@eslint/eslintrc';
 import js from '@eslint/js';
 import tsParser from '@typescript-eslint/parser';
+import eslintConfigPrettier from 'eslint-config-prettier';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -71,4 +72,5 @@ export default [
       '@typescript-eslint/explicit-function-return-type': 'off',
     },
   },
+  eslintConfigPrettier,
 ];
