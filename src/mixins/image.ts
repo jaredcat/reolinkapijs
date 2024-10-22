@@ -1,5 +1,5 @@
-import BaseAPIHandler from '@handlers/baseApiHandler';
-import CommandData from '@interfaces/CommandData';
+import BaseAPIHandler from "@handlers/baseApiHandler";
+import CommandData from "@interfaces/CommandData";
 
 export interface SetImageParams {
   Image: {
@@ -37,17 +37,17 @@ class ImageAPIMixin extends BaseAPIHandler {
    */
 
   public async setAdvImageSettings(
-    anti_flicker: string = 'Outdoor',
-    exposure: string = 'Auto',
+    anti_flicker: string = "Outdoor",
+    exposure: string = "Auto",
     gain_min: number = 1,
     gain_max: number = 62,
     shutter_min: number = 1,
     shutter_max: number = 125,
     blue_gain: number = 128,
     red_gain: number = 128,
-    white_balance: string = 'Auto',
-    day_night: string = 'Auto',
-    back_light: string = 'DynamicRangeControl',
+    white_balance: string = "Auto",
+    day_night: string = "Auto",
+    back_light: string = "DynamicRangeControl",
     blc: number = 128,
     drc: number = 128,
     rotation: number = 0,
@@ -59,7 +59,7 @@ class ImageAPIMixin extends BaseAPIHandler {
      */
     const body: CommandData[] = [
       {
-        cmd: 'SetIsp',
+        cmd: "SetIsp",
         action: 0,
         param: {
           Isp: {
@@ -82,7 +82,7 @@ class ImageAPIMixin extends BaseAPIHandler {
         },
       },
     ];
-    return this.executeCommand('SetIsp', body);
+    return this.executeCommand("SetIsp", body);
   }
 
   public async setImageSettings(
@@ -97,7 +97,7 @@ class ImageAPIMixin extends BaseAPIHandler {
      */
     const body: CommandData[] = [
       {
-        cmd: 'SetImage',
+        cmd: "SetImage",
         action: 0,
         param: {
           Image: {
@@ -112,7 +112,7 @@ class ImageAPIMixin extends BaseAPIHandler {
       },
     ];
 
-    return this.executeCommand('SetImage', body);
+    return this.executeCommand("SetImage", body);
   }
 }
 

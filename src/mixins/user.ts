@@ -1,4 +1,4 @@
-import BaseAPIHandler from '@handlers/baseApiHandler';
+import BaseAPIHandler from "@handlers/baseApiHandler";
 
 export interface DelUserParams {
   User: {
@@ -28,8 +28,8 @@ class UserAPIMixin extends BaseAPIHandler {
    * See examples/response/GetOnline.json for example response data.
    */
   async getOnlineUser(): Promise<OnlineUsersResponse> {
-    const body = [{ cmd: 'GetOnline', action: 1, param: {} }];
-    return this.executeCommand('GetOnline', body);
+    const body = [{ cmd: "GetOnline", action: 1, param: {} }];
+    return this.executeCommand("GetOnline", body);
   }
 
   /**
@@ -37,8 +37,8 @@ class UserAPIMixin extends BaseAPIHandler {
    * See examples/response/GetUser.json for example response data.
    */
   async getUsers(): Promise<UsersListResponse> {
-    const body = [{ cmd: 'GetUser', action: 1, param: {} }];
-    return this.executeCommand('GetUser', body);
+    const body = [{ cmd: "GetUser", action: 1, param: {} }];
+    return this.executeCommand("GetUser", body);
   }
 
   /**
@@ -51,11 +51,11 @@ class UserAPIMixin extends BaseAPIHandler {
   async addUser(
     username: string,
     password: string,
-    level: 'guest' | 'admin' = 'guest',
+    level: "guest" | "admin" = "guest",
   ): Promise<boolean> {
     const body = [
       {
-        cmd: 'AddUser',
+        cmd: "AddUser",
         action: 0,
         param: {
           User: {
@@ -68,16 +68,16 @@ class UserAPIMixin extends BaseAPIHandler {
     ];
 
     try {
-      const response = await this.executeCommand('AddUser', body);
+      const response = await this.executeCommand("AddUser", body);
       const rData = response[0] as UserResponse;
 
       if (rData.value.rspCode === 200) {
         return true;
       }
-      console.log('Could not add user. Camera responded with:', rData.value);
+      console.log("Could not add user. Camera responded with:", rData.value);
       return false;
     } catch (error) {
-      console.error('Error adding user:', error);
+      console.error("Error adding user:", error);
       return false;
     }
   }
@@ -91,7 +91,7 @@ class UserAPIMixin extends BaseAPIHandler {
   async modifyUser(username: string, password: string): Promise<boolean> {
     const body = [
       {
-        cmd: 'ModifyUser',
+        cmd: "ModifyUser",
         action: 0,
         param: {
           User: {
@@ -103,7 +103,7 @@ class UserAPIMixin extends BaseAPIHandler {
     ];
 
     try {
-      const response = await this.executeCommand('ModifyUser', body);
+      const response = await this.executeCommand("ModifyUser", body);
       const rData = response[0] as UserResponse;
 
       if (rData.value.rspCode === 200) {
@@ -114,7 +114,7 @@ class UserAPIMixin extends BaseAPIHandler {
       );
       return false;
     } catch (error) {
-      console.error('Error modifying user:', error);
+      console.error("Error modifying user:", error);
       return false;
     }
   }
@@ -127,7 +127,7 @@ class UserAPIMixin extends BaseAPIHandler {
   async deleteUser(username: string): Promise<boolean> {
     const body = [
       {
-        cmd: 'DelUser',
+        cmd: "DelUser",
         action: 0,
         param: {
           User: {
@@ -138,7 +138,7 @@ class UserAPIMixin extends BaseAPIHandler {
     ];
 
     try {
-      const response = await this.executeCommand('DelUser', body);
+      const response = await this.executeCommand("DelUser", body);
       const rData = response[0] as UserResponse;
 
       if (rData.value.rspCode === 200) {
@@ -149,7 +149,7 @@ class UserAPIMixin extends BaseAPIHandler {
       );
       return false;
     } catch (error) {
-      console.error('Error deleting user:', error);
+      console.error("Error deleting user:", error);
       return false;
     }
   }

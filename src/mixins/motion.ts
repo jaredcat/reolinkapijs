@@ -1,5 +1,5 @@
-import BaseAPIHandler from '@handlers/baseApiHandler';
-import CommandData from '@interfaces/CommandData';
+import BaseAPIHandler from "@handlers/baseApiHandler";
+import CommandData from "@interfaces/CommandData";
 
 export interface SearchParams {
   Search: {
@@ -50,7 +50,7 @@ class MotionAPIMixin extends BaseAPIHandler {
   public async getMotionFiles(
     start: Date,
     end: Date = new Date(),
-    streamtype: string = 'sub',
+    streamtype: string = "sub",
     channel: number = 0,
   ): Promise<ProcessedMotionList> {
     /**
@@ -81,11 +81,11 @@ class MotionAPIMixin extends BaseAPIHandler {
     };
 
     const body: CommandData[] = [
-      { cmd: 'Search', action: 1, param: searchParams },
+      { cmd: "Search", action: 1, param: searchParams },
     ];
 
     try {
-      const resp = await this.executeCommand('Search', body);
+      const resp = await this.executeCommand("Search", body);
       const result = resp[0]?.value?.SearchResult;
       const files = result?.File || [];
       if (files.length > 0) {
@@ -93,7 +93,7 @@ class MotionAPIMixin extends BaseAPIHandler {
       }
       return [];
     } catch (error) {
-      console.error('Error getting motion files:', error);
+      console.error("Error getting motion files:", error);
       return [];
     }
   }
@@ -105,14 +105,14 @@ class MotionAPIMixin extends BaseAPIHandler {
      */
     const processedMotions: ProcessedMotionList = [];
     const replaceFields: { [key: string]: string } = {
-      mon: 'month',
-      sec: 'second',
-      min: 'minute',
+      mon: "month",
+      sec: "second",
+      min: "minute",
     };
 
     for (const file of motion_files) {
       const timeRange: { [key: string]: Date } = {};
-      for (const x of ['Start', 'End']) {
+      for (const x of ["Start", "End"]) {
         const raw = { ...file[`${x}Time`] };
         for (const [k, v] of Object.entries(replaceFields)) {
           if (k in raw) {
@@ -121,7 +121,7 @@ class MotionAPIMixin extends BaseAPIHandler {
           }
         }
         // Adjust for JavaScript's 0-indexed months
-        if ('month' in raw) {
+        if ("month" in raw) {
           raw.month -= 1;
         }
         timeRange[x.toLowerCase()] = new Date(

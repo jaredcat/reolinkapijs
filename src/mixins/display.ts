@@ -1,5 +1,5 @@
-import BaseAPIHandler from '@handlers/baseApiHandler';
-import CommandData, { OsdPos } from '../interfaces/CommandData';
+import BaseAPIHandler from "@handlers/baseApiHandler";
+import CommandData, { OsdPos } from "../interfaces/CommandData";
 
 export interface SetOsdParams {
   Osd: {
@@ -27,9 +27,9 @@ class DisplayAPIMixin extends BaseAPIHandler {
      * @returns response json
      */
     const body: CommandData[] = [
-      { cmd: 'GetOsd', action: 1, param: { channel: 0 } },
+      { cmd: "GetOsd", action: 1, param: { channel: 0 } },
     ];
-    return this.executeCommand('GetOsd', body);
+    return this.executeCommand("GetOsd", body);
   }
 
   public async getMask(): Promise<any> {
@@ -39,19 +39,19 @@ class DisplayAPIMixin extends BaseAPIHandler {
      * @returns response json
      */
     const body: CommandData[] = [
-      { cmd: 'GetMask', action: 1, param: { channel: 0 } },
+      { cmd: "GetMask", action: 1, param: { channel: 0 } },
     ];
-    return this.executeCommand('GetMask', body);
+    return this.executeCommand("GetMask", body);
   }
 
   public async setOsd(
     bg_color: boolean = false,
     channel: number = 0,
     osd_channel_enabled: boolean = false,
-    osd_channel_name: string = '',
-    osd_channel_pos: OsdPos = OsdPos['Lower Right'],
+    osd_channel_name: string = "",
+    osd_channel_pos: OsdPos = OsdPos["Lower Right"],
     osd_time_enabled: boolean = false,
-    osd_time_pos: OsdPos = OsdPos['Lower Right'],
+    osd_time_pos: OsdPos = OsdPos["Lower Right"],
     osd_watermark_enabled: boolean = false,
   ): Promise<boolean> {
     /**
@@ -60,7 +60,7 @@ class DisplayAPIMixin extends BaseAPIHandler {
      */
     const body: CommandData[] = [
       {
-        cmd: 'SetOsd',
+        cmd: "SetOsd",
         action: 1,
         param: {
           Osd: {
@@ -79,18 +79,18 @@ class DisplayAPIMixin extends BaseAPIHandler {
     ];
 
     try {
-      const response = await this.executeCommand('SetOsd', body);
+      const response = await this.executeCommand("SetOsd", body);
       const r_data = response[0];
       if (r_data?.value?.rspCode === 200) {
         return true;
       }
       console.log(
-        'Could not set OSD. Camera responded with status:',
+        "Could not set OSD. Camera responded with status:",
         r_data.error,
       );
       return false;
     } catch (error) {
-      console.error('Error setting OSD:', error);
+      console.error("Error setting OSD:", error);
       return false;
     }
   }

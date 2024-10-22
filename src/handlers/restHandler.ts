@@ -1,12 +1,12 @@
-import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios';
-import https from 'https';
+import axios, { AxiosInstance, AxiosRequestConfig, AxiosResponse } from "axios";
+import https from "https";
 
 interface RequestParams {
   [key: string]: string | number | undefined;
 }
 
 class Request {
-  static proxies: AxiosRequestConfig['proxy'] = undefined;
+  static proxies: AxiosRequestConfig["proxy"] = undefined;
   static session: AxiosInstance | undefined = undefined;
 
   private static getSession(): AxiosInstance {
@@ -19,7 +19,7 @@ class Request {
     params: RequestParams = {},
   ): Promise<AxiosResponse | null> {
     try {
-      const headers = { 'Content-Type': 'application/json' };
+      const headers = { "Content-Type": "application/json" };
       const response = await Request.getSession().post(url, data, {
         headers,
         params,
@@ -33,7 +33,7 @@ class Request {
         throw new Error(`HTTP Request had non-200 Status: ${response.status}`);
       }
     } catch (error) {
-      console.error('Post Error\n', error);
+      console.error("Post Error\n", error);
       throw error;
     }
   }
@@ -53,7 +53,7 @@ class Request {
 
       return response;
     } catch (error) {
-      console.error('Get Error\n', error);
+      console.error("Get Error\n", error);
       throw error;
     }
   }

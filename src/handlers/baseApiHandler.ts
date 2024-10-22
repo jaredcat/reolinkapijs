@@ -1,7 +1,7 @@
-import CommandData from '@interfaces/CommandData';
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
-import fs from 'fs';
-import Request from './restHandler';
+import CommandData from "@interfaces/CommandData";
+import axios, { AxiosInstance, AxiosRequestConfig } from "axios";
+import fs from "fs";
+import Request from "./restHandler";
 
 interface LoginResponse {
   code: string;
@@ -24,9 +24,9 @@ class BaseAPIHandler {
     username: string,
     password: string,
     https: boolean = false,
-    options?: { proxy?: AxiosRequestConfig['proxy']; session?: AxiosInstance },
+    options?: { proxy?: AxiosRequestConfig["proxy"]; session?: AxiosInstance },
   ) {
-    const scheme = https ? 'https' : 'http';
+    const scheme = https ? "https" : "http";
     this.url = `${scheme}://${ip}/cgi-bin/api.cgi`;
     this.ip = ip;
     this.username = username;
@@ -39,7 +39,7 @@ class BaseAPIHandler {
     try {
       const body: CommandData[] = [
         {
-          cmd: 'Login',
+          cmd: "Login",
           action: 0,
           param: {
             User: {
@@ -50,32 +50,32 @@ class BaseAPIHandler {
         },
       ];
 
-      const param = { cmd: 'Login', token: 'null' };
+      const param = { cmd: "Login", token: "null" };
 
       const response = await Request.post(this.url, body, param);
       const data: LoginResponse = response?.data[0];
 
       if (parseInt(data.code) === 0) {
         this.token = data.value.Token.name;
-        console.log('Login success');
+        console.log("Login success");
         return true;
       } else {
-        console.log('Failed to login');
+        console.log("Failed to login");
         return false;
       }
     } catch (error) {
-      console.error('Error during login:', error);
+      console.error("Error during login:", error);
       return false;
     }
   }
 
   async logout(): Promise<boolean> {
     try {
-      const data: CommandData[] = [{ cmd: 'Logout', action: 0 }];
-      await this.executeCommand('Logout', data);
+      const data: CommandData[] = [{ cmd: "Logout", action: 0 }];
+      await this.executeCommand("Logout", data);
       return true;
     } catch (error) {
-      console.error('Error during logout:', error);
+      console.error("Error during logout:", error);
       return false;
     }
   }
@@ -86,7 +86,7 @@ class BaseAPIHandler {
     multi: boolean = false,
   ): Promise<any> {
     if (!this.token) {
-      throw new Error('Login first');
+      throw new Error("Login first");
     }
 
     const params: any = { token: this.token, cmd: command };
@@ -95,11 +95,11 @@ class BaseAPIHandler {
     }
 
     try {
-      if (command === 'Download') {
+      if (command === "Download") {
         const tgtFilePath = data[0].filepath;
         const response = await axios.get(this.url, {
           params,
-          responseType: 'stream',
+          responseType: "stream",
           proxy: Request.proxies,
         });
 

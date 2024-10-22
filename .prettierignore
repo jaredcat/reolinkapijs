@@ -1,0 +1,10 @@
+# Ignore artifacts:
+build
+coverage
+
+node_modules
+tmp
+package.json
+package-lock.json
+LICENSE.md
+.vscode

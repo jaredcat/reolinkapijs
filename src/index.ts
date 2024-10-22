@@ -1,1 +1,1 @@
-export { default as Camera } from './camera';
+export { default as Camera } from "./camera";
