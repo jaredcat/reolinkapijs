@@ -58,68 +58,68 @@ Make a pull request.
 
 Stream:
 
-- [X] Blocking RTSP stream
-- [X] Non-Blocking RTSP stream
+- [x] Blocking RTSP stream
+- [x] Non-Blocking RTSP stream
 
 GET:
 
-- [X] Login
-- [X] Logout
-- [X] Display -> OSD
-- [X] Recording -> Encode (Clear and Fluent Stream)
-- [X] Recording -> Advance (Scheduling)
-- [X] Network -> General
-- [X] Network -> Advanced
-- [X] Network -> DDNS
-- [X] Network -> NTP
-- [X] Network -> E-mail
-- [X] Network -> FTP
-- [X] Network -> Push
-- [X] Network -> WIFI
-- [X] Alarm -> Motion
-- [X] System -> General
-- [X] System -> DST
-- [X] System -> Information
+- [x] Login
+- [x] Logout
+- [x] Display -> OSD
+- [x] Recording -> Encode (Clear and Fluent Stream)
+- [x] Recording -> Advance (Scheduling)
+- [x] Network -> General
+- [x] Network -> Advanced
+- [x] Network -> DDNS
+- [x] Network -> NTP
+- [x] Network -> E-mail
+- [x] Network -> FTP
+- [x] Network -> Push
+- [x] Network -> WIFI
+- [x] Alarm -> Motion
+- [x] System -> General
+- [x] System -> DST
+- [x] System -> Information
 - [ ] System -> Maintenance
-- [X] System -> Performance
+- [x] System -> Performance
 - [ ] System -> Reboot
-- [X] User -> Online User
-- [X] User -> Add User
-- [X] User -> Manage User
-- [X] Device -> HDD/SD Card
+- [x] User -> Online User
+- [x] User -> Add User
+- [x] User -> Manage User
+- [x] Device -> HDD/SD Card
 - [x] PTZ -> Presets, Calibration Status
 - [ ] Zoom
 - [ ] Focus
 - [ ] Image (Brightness, Contrast, Saturation, Hue, Sharp, Mirror, Rotate)
 - [ ] Advanced Image (Anti-flicker, Exposure, White Balance, DayNight, Backlight, LED light, 3D-NR)
-- [X] Image Data -> "Snap" Frame from Video Stream
+- [x] Image Data -> "Snap" Frame from Video Stream
 
 SET:
 
-- [X] Display -> OSD
-- [X] Recording -> Encode (Clear and Fluent Stream)
+- [x] Display -> OSD
+- [x] Recording -> Encode (Clear and Fluent Stream)
 - [ ] Recording -> Advance (Scheduling)
-- [X] Network -> General
-- [X] Network -> Advanced
+- [x] Network -> General
+- [x] Network -> Advanced
 - [ ] Network -> DDNS
 - [ ] Network -> NTP
 - [ ] Network -> E-mail
 - [ ] Network -> FTP
 - [ ] Network -> Push
-- [X] Network -> WIFI
+- [x] Network -> WIFI
 - [ ] Alarm -> Motion
 - [ ] System -> General
 - [ ] System -> DST
-- [X] System -> Reboot
-- [X] User -> Online User
-- [X] User -> Add User
-- [X] User -> Manage User
-- [X] Device -> HDD/SD Card (Format)
+- [x] System -> Reboot
+- [x] User -> Online User
+- [x] User -> Add User
+- [x] User -> Manage User
+- [x] Device -> HDD/SD Card (Format)
 - [x] PTZ (including calibrate)
 - [x] Zoom
 - [x] Focus
-- [X] Image (Brightness, Contrast, Saturation, Hue, Sharp, Mirror, Rotate)
-- [X] Advanced Image (Anti-flicker, Exposure, White Balance, DayNight, Backlight, LED light, 3D-NR)
+- [x] Image (Brightness, Contrast, Saturation, Hue, Sharp, Mirror, Rotate)
+- [x] Advanced Image (Anti-flicker, Exposure, White Balance, DayNight, Backlight, LED light, 3D-NR)
 
 ### Supported Cameras
 
