@@ -96,6 +96,9 @@ class BaseAPIHandler {
 
     try {
       if (command === 'Download') {
+        if (!data?.[0]?.filepath) {
+          throw new Error('Filepath is required for Download command');
+        }
         const tgtFilePath = data[0].filepath;
         const response = await axios.get(this.url, {
           params,

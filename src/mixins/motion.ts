@@ -98,7 +98,7 @@ class MotionAPIMixin extends BaseAPIHandler {
     }
   }
 
-  private processMotionFiles(motion_files: RawMotionList): ProcessedMotionList {
+  private processMotionFiles(motionFiles: RawMotionList): ProcessedMotionList {
     /**
      * Processes raw list of objects containing motion timestamps
      * and the filename associated with them
@@ -110,8 +110,8 @@ class MotionAPIMixin extends BaseAPIHandler {
       min: 'minute',
     };
 
-    for (const file of motion_files) {
-      const timeRange: { [key: string]: Date } = {};
+    for (const file of motionFiles) {
+      const timeRange: { start?: Date; end?: Date } = {};
       for (const x of ['Start', 'End']) {
         const raw = { ...file[`${x}Time`] };
         for (const [k, v] of Object.entries(replaceFields)) {
@@ -124,7 +124,7 @@ class MotionAPIMixin extends BaseAPIHandler {
         if ('month' in raw) {
           raw.month -= 1;
         }
-        timeRange[x.toLowerCase()] = new Date(
+        timeRange[x.toLowerCase() as 'start' | 'end'] = new Date(
           raw.year,
           raw.month,
           raw.day,
@@ -134,8 +134,8 @@ class MotionAPIMixin extends BaseAPIHandler {
         );
       }
       processedMotions.push({
-        start: timeRange.start,
-        end: timeRange.end,
+        start: timeRange.start!,
+        end: timeRange.end!,
         filename: file.name,
       });
     }

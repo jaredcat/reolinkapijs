@@ -6,6 +6,9 @@ img/
 gulpfile.js
 .devcontainer
 .github
+tmp
+temp
+.env
 
 # CI test files
 test/
@@ -23,6 +26,14 @@ tsconfig.*.json
 # ESLint configuration
 .eslintrc.json
 .eslintrc.js
+eslint.config.*
+
+# Prettier configuration
+.prettierrc
+.prettierignore
+
+# Vitest
+vitest.config.mjs
 
 # npm package files
 *.tgz
@@ -30,3 +41,4 @@ package-lock.json
 
 # Exclude documentation
 docs
+examples/
