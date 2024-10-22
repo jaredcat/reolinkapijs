@@ -1,8 +1,8 @@
-import BaseAPIHandler from '@handlers/base_api_handler';
+import BaseAPIHandler from '@handlers/baseApiHandler';
 import { Mat } from '@u4/opencv4nodejs';
+import RtspClient from '@utils/rtspClient';
 import axios from 'axios';
 import sharp from 'sharp';
-import RtspClient from '../utils/rtsp_client';
 
 // Type definitions
 interface ProxyConfig {

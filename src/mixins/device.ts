@@ -1,7 +1,6 @@
+import BaseAPIHandler from '@handlers/baseApiHandler';
+import CommandData from '@interfaces/CommandData';
 import { Mixin } from 'ts-mixer';
-
-import CommandData from '../types/CommandData';
-import BaseAPIHandler from '@handlers/base_api_handler';
 
 export interface DeviceAPIMixinParams {
   DevName?: { name: string };

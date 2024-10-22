@@ -1,7 +1,7 @@
+import CommandData from '@interfaces/CommandData';
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios';
 import fs from 'fs';
-import CommandData from '../types/CommandData';
-import Request from './rest_handler';
+import Request from './restHandler';
 
 interface LoginResponse {
   code: string;

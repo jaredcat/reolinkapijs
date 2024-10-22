@@ -1,5 +1,5 @@
-import BaseAPIHandler from '@handlers/base_api_handler';
-import CommandData, { OsdPos } from '../types/CommandData';
+import BaseAPIHandler from '@handlers/baseApiHandler';
+import CommandData, { OsdPos } from '../interfaces/CommandData';
 
 export interface SetOsdParams {
   Osd: {

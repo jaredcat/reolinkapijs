@@ -1,4 +1,4 @@
-import APIHandler from '@handlers/api_handler';
+import APIHandler from '@handlers/apiHandler';
 import { AxiosInstance, AxiosRequestConfig } from 'axios';
 
 class Camera extends APIHandler {

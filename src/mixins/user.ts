@@ -1,4 +1,4 @@
-import BaseAPIHandler from '@handlers/base_api_handler';
+import BaseAPIHandler from '@handlers/baseApiHandler';
 
 export interface DelUserParams {
   User: {

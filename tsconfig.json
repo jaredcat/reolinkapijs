@@ -29,17 +29,37 @@
     // "noUnusedLocals": true,
     // "noUnusedParameters": true,
     "target": "ES2022",
-    "lib": ["ES2023", "DOM"],
+    "lib": [
+      "ES2023",
+      "DOM"
+    ],
     "sourceMap": true,
     "inlineSourceMap": false,
-    "types": ["vitest/globals"],
+    "types": [
+      "vitest/globals"
+    ],
     "paths": {
-      "@mixins/*": ["./src/mixins/*"],
-      "@handlers/*": ["./src/handlers/*"],
-      "@types/*": ["./src/types/*"],
-      "@utils/*": ["./src/utils/*"]
+      "@mixins/*": [
+        "./src/mixins/*"
+      ],
+      "@handlers/*": [
+        "./src/handlers/*"
+      ],
+      "@interfaces/*": [
+        "./src/interfaces/*"
+      ],
+      "@utils/*": [
+        "./src/utils/*"
+      ]
     }
   },
-  "include": ["src/**/*.ts", "eslint.config.mjs", "vitest.config.mjs"],
-  "exclude": ["build/**", "node_modules/**"]
+  "include": [
+    "src/**/*.ts",
+    "eslint.config.mjs",
+    "vitest.config.mjs"
+  ],
+  "exclude": [
+    "build/**",
+    "node_modules/**"
+  ]
 }

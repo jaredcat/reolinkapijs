@@ -1,6 +1,6 @@
+import BaseAPIHandler from '@handlers/baseApiHandler';
+import CommandData from '@interfaces/CommandData';
 import { Mixin } from 'ts-mixer';
-import BaseAPIHandler from '../handlers/base_api_handler';
-import CommandData from '../types/CommandData';
 
 interface AlarmResponse {
   // Define the structure of the response if known, use any if the structure is dynamic
