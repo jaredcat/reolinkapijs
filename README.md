@@ -4,7 +4,6 @@
  <img alt="Reolink Approval" src="https://img.shields.io/badge/reolink-approved-blue?style=flat-square">
  <img alt="GitHub" src="https://img.shields.io/github/license/ReolinkCameraAPI/reolinkapipy?style=flat-square">
  <img alt="GitHub tag (latest SemVer)" src="https://img.shields.io/github/v/tag/ReolinkCameraAPI/reolinkapipy?style=flat-square">
- <img alt="PyPI" src="https://img.shields.io/pypi/v/reolinkapi?style=flat-square">
  <img alt="Discord" src="https://img.shields.io/discord/773257004911034389?style=flat-square">
 </p>
 
