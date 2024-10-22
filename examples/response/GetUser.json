@@ -9,10 +9,7 @@
     },
     "range": {
       "User": {
-        "level": [
-          "guest",
-          "admin"
-        ],
+        "level": ["guest", "admin"],
         "password": {
           "maxLen": 31,
           "minLen": 6

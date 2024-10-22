@@ -1,0 +1,16 @@
+{
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "eslint.enable": true,
+  "files.eol": "\n",
+  "cSpell.words": [
+    "bgcolor",
+    "Ddns",
+    "nvrdownload",
+    "onvif",
+    "reolinkapi",
+    "rtmp",
+    "Rtsp",
+    "streamtype",
+    "Upnp"
+  ]
+}

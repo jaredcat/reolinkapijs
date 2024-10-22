@@ -1,10 +1,9 @@
 [
-    {
-       "cmd" : "SetImage",
-       "code" : 0,
-       "value" : {
-          "rspCode" : 200
-       }
+  {
+    "cmd": "SetImage",
+    "code": 0,
+    "value": {
+      "rspCode": 200
     }
- ]
- 
+  }
+]

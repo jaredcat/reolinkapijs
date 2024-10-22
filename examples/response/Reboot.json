@@ -1,9 +1,9 @@
 [
-    {
-        "cmd": "Reboot",
-        "code": 0,
-        "value": {
-            "rspCode": 200
-        }
+  {
+    "cmd": "Reboot",
+    "code": 0,
+    "value": {
+      "rspCode": 200
     }
+  }
 ]

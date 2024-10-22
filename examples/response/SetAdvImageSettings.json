@@ -1,10 +1,9 @@
 [
-    {
-       "cmd" : "SetIsp",
-       "code" : 0,
-       "value" : {
-          "rspCode" : 200
-       }
+  {
+    "cmd": "SetIsp",
+    "code": 0,
+    "value": {
+      "rspCode": 200
     }
- ]
- 
+  }
+]
